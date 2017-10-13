@@ -4,6 +4,7 @@ import net.liftweb.http.js.JE.JsRaw
 import net.liftweb.http.js.JsCmd
 import net.liftweb.http.js.JsCmds._
 import net.liftweb.http.{S, SHtml, SessionVar}
+import net.liftweb.util.ClearClearable
 
 import scala.xml.NodeSeq
 import net.liftweb.util.Helpers._
@@ -21,8 +22,8 @@ object Chat {
   def render: NodeSeq => NodeSeq = {
     addLoginPostHandler
 
-    if(User.get.isDefined) "#login [class+]" #> "hidden"
-    else "#chat [class+]" #> "hidden"
+    (if(User.get.isDefined) "#login [class+]" #> "hidden"
+    else "#chat [class+]" #> "hidden") & ClearClearable
   }
 }
 

@@ -35,37 +35,37 @@
     </style>
 </head>
 <body data-lift="Chat">
-<div class="chat" id="chat">
+<div class="chat" id="chat" ng-app="Chat">
   <div class="chat-header"><h4 class="chat-title">Chat</h4></div>
-  <div class="chat-thread">
-    <div class="message">
+  <div class="chat-thread" ng-controller="chatMessages">
+    <div class="message" ng-repeat="msg in msgs track by $index">
       <div class="sender-photo"></div>
-      <div class="sender-name">Sender</div>
-      <div class="message-content">Hello World</div>
+      <div class="sender-name" ng-bind="msg.name">Sender</div>
+      <div class="message-content" ng-bind="msg.msg">Hello World</div>
     </div>
-    <div class="message">
+    <div class="message clearable">
       <div class="sender-photo"></div>
       <div class="sender-name">Sender</div>
       <div class="message-content">Hello WorldHello WorldHello WorldHello WorldHello WorldHello WorldHello
         WorldHello World
       </div>
     </div>
-    <div class="message">
+    <div class="message clearable">
       <div class="sender-photo"></div>
       <div class="sender-name">Sender</div>
       <div class="message-content">Hello World</div>
     </div>
-    <div class="message">
+    <div class="message clearable">
       <div class="sender-photo"></div>
       <div class="sender-name">Sender</div>
       <div class="message-content">Hello World</div>
     </div>
-    <div class="message">
+    <div class="message clearable">
       <div class="sender-photo"></div>
       <div class="sender-name">Sender</div>
       <div class="message-content">Hello World</div>
     </div>
-    <div class="message">
+    <div class="message clearable">
       <div class="sender-photo"></div>
       <div class="sender-name">Sender</div>
       <div class="message-content">Hello World</div>
@@ -100,6 +100,8 @@
 <script type="text/javascript" src="assets/webflow.bce87ab50.js"></script>
 <!--[if lte IE 9]>
 <script src="//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
-
+<!-- Prerequisite stuff the module needs -->
+<script data-lift="Angular"></script>
+<script type="text/javascript" src="/assets/chat.js"></script>
 </body>
 </html>

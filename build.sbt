@@ -4,7 +4,7 @@ version := "0.1.0"
 
 organization := "com.joescii"
 
-scalaVersion := "2.12.3"
+scalaVersion := "2.11.11"
 
 resolvers ++= Seq(
   "snapshots"     at "https://oss.sonatype.org/content/repositories/snapshots",
@@ -21,10 +21,13 @@ scalacOptions ++= Seq("-deprecation", "-unchecked")
 libraryDependencies ++= {
   val liftVersion = "3.1.0"
   val liftEdition = liftVersion.split("\\.").take(2).mkString(".")
+  val angularVersion = "1.6.5"
   Seq(
     "net.liftweb"       %% "lift-webkit"            % liftVersion,
     "net.liftweb"       %% "lift-mapper"            % liftVersion,
     "net.liftmodules"   %% s"lift-jquery-module_$liftEdition" % "2.10",
+    "org.webjars.bower" %  "angularjs"         % angularVersion,
+    "net.liftmodules"   %% ("ng_"+liftEdition) % "0.10.2"  % "compile",
     "ch.qos.logback"    % "logback-classic"         % "1.2.3",
     "org.specs2"        %% "specs2-core"            % "3.9.4"            % "test",
     "com.h2database"    % "h2"                      % "1.4.187",

@@ -94,5 +94,33 @@ class Boot {
 
     // Make a transaction span the whole HTTP request
     S.addAround(DB.buildLoanWrapper)
+
+    net.liftmodules.ng.Angular.init(
+      // Set to true if you plan to use futures. False otherwise to avoid an unneeded comet
+      futures = true,
+
+      // Set to the CSS selector for finding your apps in the page.
+      appSelector = "[ng-app]",
+
+      // Set to true to include a script tag with the src set to the path for liftproxy.js.
+      // Set to false if you want to handle that yourself by referring to the path in
+      // net_liftmodules_ng.
+      includeJsScript = true,
+
+      // Set to true to include angular.js from org.webjars angularjs
+      includeAngularJs = true,
+
+      // Add any additional js modules you want to load in the page from the angularjs webjar
+//      additionalAngularJsModules = List("animate", "cookies", "loader", "resource", "route", "sanitize", "scenario", "touch"),
+
+      // Set to true to also deliver the angular-csp.css stylesheet on the page
+      includeAngularCspCss = true,
+
+      // Set to true to preserve the order of ajax service calls even in the event of server communication failures
+//      retryAjaxInOrder = true,
+
+      // Set to any function mapping a net.liftweb.common.Failure into a Reject
+      failureHandler = net.liftmodules.ng.Angular.defaultFailureHandler
+    )
   }
 }

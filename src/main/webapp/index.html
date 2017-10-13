@@ -38,6 +38,7 @@
 <div class="chat" id="chat" ng-app="Chat">
   <div class="chat-header"><h4 class="chat-title">Chat</h4></div>
   <div class="chat-thread" ng-controller="chatMessages">
+    <div data-lift="comet?type=ChatScope"></div>
     <div class="message" ng-repeat="msg in msgs track by $index">
       <div class="sender-photo"></div>
       <div class="sender-name" ng-bind="msg.name">Sender</div>

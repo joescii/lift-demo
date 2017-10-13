@@ -71,10 +71,10 @@
       <div class="message-content">Hello World</div>
     </div>
   </div>
-  <div class="form-wrapper w-form">
-    <form class="submit-form" data-name="Email Form" id="email-form" name="email-form" method="post"><input
+  <div class="form-wrapper w-form" ng-controller="chatSubmission">
+    <form class="submit-form" data-name="Email Form" id="email-form" name="email-form" method="post" ng-submit="submit()"><input
         class="submit-field w-input" data-name="Name" id="text" maxlength="256" name="text"
-        placeholder="Enter your chat" type="text"><input class="submit-button w-button"
+        placeholder="Enter your chat" type="text" ng-model="currentMessage"><input class="submit-button w-button"
                                                          data-wait="Please wait..." type="submit"
                                                          value="Submit"></form>
     <div class="w-form-done">
@@ -102,6 +102,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
 <!-- Prerequisite stuff the module needs -->
 <script data-lift="Angular"></script>
+<script data-lift="ChatService"></script>
 <script type="text/javascript" src="/assets/chat.js"></script>
 </body>
 </html>

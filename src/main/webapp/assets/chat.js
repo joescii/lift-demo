@@ -1,8 +1,13 @@
-angular.module("Chat", ["lift-ng"])
-.controller("chatMessages", ["$scope", function($scope) {
-  $scope.msgs = [
-    {name: "joe", msg: "you"},
-    {name: "joe", msg: "suck"},
-    {name: "joe", msg: "javascript"}
-  ];
+angular.module("Chat", ["lift-ng", "ChatServer"])
+.controller("chatMessages", ["$scope", "chatService", function($scope, chatService) {
+  $scope.msgs = [];
+  chatService.messages().then(function(msgs) {$scope.msgs = msgs});
+}])
+.controller("chatSubmission", ["$scope", "chatService", function($scope, chatService) {
+  $scope.currentMessage = "";
+  $scope.submit = function() {
+    console.log("submitting "+$scope.currentMessage);
+    chatService.submit($scope.currentMessage);
+    $scope.currentMessage = "";
+  }
 }])
